@@ -44,9 +44,14 @@
             </exclusions>
         </dependency>
 
-        <dependency>
+        <dependency><!--页面模板依赖-->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency><!--热部署依赖-->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!--MyBatis分页插件-->
