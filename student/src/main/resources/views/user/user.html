@@ -17,9 +17,12 @@
 </div>
 
 <script th:inline="javascript">
+  console.log('jquery', $);
   //通过内联表达式获取用户信息
   var userList = [[${userList}]];
-  console.log(userList)
+  console.log(userList);
+
+
 </script>
 </body>
 </html>
