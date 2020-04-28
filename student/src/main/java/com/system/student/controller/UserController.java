@@ -1,6 +1,6 @@
 package com.system.student.controller;
 
-import com.system.student.modal.User;
+import com.system.student.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
