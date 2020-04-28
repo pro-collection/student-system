@@ -2,7 +2,6 @@ package com.system.student.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-import java.util.Date;
 
 public class Student implements Serializable {
     @ApiModelProperty(value = "主键ID")
@@ -33,7 +32,7 @@ public class Student implements Serializable {
     private String address;
 
     @ApiModelProperty(value = "出生年月日")
-    private Date birthday;
+    private Long birthday;
 
     private static final long serialVersionUID = 1L;
 
@@ -109,11 +108,11 @@ public class Student implements Serializable {
         this.address = address;
     }
 
-    public Date getBirthday() {
+    public Long getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Long birthday) {
         this.birthday = birthday;
     }
 
