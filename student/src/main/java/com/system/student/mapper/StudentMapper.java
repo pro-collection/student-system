@@ -3,8 +3,13 @@ package com.system.student.mapper;
 import com.system.student.model.Student;
 import com.system.student.model.StudentExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
 public interface StudentMapper {
     int countByExample(StudentExample example);
 
