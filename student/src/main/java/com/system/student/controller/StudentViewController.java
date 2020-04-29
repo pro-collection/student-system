@@ -19,7 +19,7 @@ public class StudentViewController {
 
 
 
-    @GetMapping("/")
+    @GetMapping("/user")
     public ModelAndView index() {
         return new ModelAndView("user/user", "userList", userList);
     }
