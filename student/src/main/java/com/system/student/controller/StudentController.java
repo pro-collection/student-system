@@ -20,7 +20,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public List<Student> findList(
             @RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
             @RequestParam(value = "pageSie", defaultValue = "20") Integer pageSize
