@@ -1,6 +1,7 @@
 package com.system.student.controller;
 
 import com.system.student.model.User;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Controller
 public class StudentViewController {
     private List<User> userList = new ArrayList<>();
 
