@@ -22,12 +22,14 @@ spring:
 #        min-idle: 0 # 连接池中的最小空闲连接
 #    timeout: 3000ms # 连接超时时间（毫秒）
   mvc:
-    static-path-pattern: /static/**    #静态资源的请求方式
+    static-path-pattern: /views/**    #静态资源的请求方式
+    view:
+      suffix: .html
   resources:
-    static-locations: classpath:/static/  # 静态资源的配置位置，可以写成一个数组配置多个目录
-  thymeleaf:
-    cache: false #关闭缓存
-    prefix: classpath:/views/ #调整页面路径
+    static-locations: classpath:/views/  # 静态资源的配置位置，可以写成一个数组配置多个目录
+#  thymeleaf:
+#    cache: false #关闭缓存
+#    prefix: classpath:/views/ #调整页面路径
 
 mybatis:
   mapper-locations:
