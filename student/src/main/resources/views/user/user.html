@@ -8,21 +8,39 @@
 </head>
 <body>
 
-<div th:each="user,userStat:${userList}" th:class="${userStat.even}?'even':'odd'">
-    序号：<input type="text" th:value="${userStat.count}"/>
-    账号：<input type="text" th:value="${user.username}"/>
-    密码：<input type="password" th:value="${user.password}"/>
-    时间：<input type="text" th:value="${user.createTime}"/>
-    时间：<input type="text" th:value="${#dates.format(user.createTime,'yyyy-MM-dd HH:mm:ss')}"/>
-</div>
+<table class="layui-hide" id="test"></table>
 
 <script th:inline="javascript">
-  console.log('jquery', $);
-  //通过内联表达式获取用户信息
-  var userList = [[${userList}]];
-  console.log(userList);
-
-
+  layui.use('table', () => {
+    const table = layui.table;
+    table.render({
+      elem: '#test',
+      data: [
+        {
+          id: '123',
+          username: 'yanle',
+          sex: '男',
+          city: '成都',
+          sign: '1231212312312',
+          // experience: '12',
+          // score: '12',
+          // classify: '程序员',
+          // wealth: '没有钱',
+        }],
+      cols: [[
+        {field: 'id', width: 80, title: 'ID', sort: true},
+        {field: 'username', width: 80, title: '用户名'},
+        {field: 'sex', width: 80, title: '性别', sort: true},
+        {field: 'city', width: 80, title: '城市'},
+        {field: 'sign', title: '签名', minWidth: 150},
+        // {field: 'experience', width: 80, title: '积分', sort: true},
+        // {field: 'score', width: 80, title: '评分', sort: true},
+        // {field: 'classify', width: 80, title: '职业'},
+        // {field: 'wealth', width: 135, title: '财富', sort: true},
+      ]],
+      page: true
+    })
+  });
 </script>
 </body>
 </html>
