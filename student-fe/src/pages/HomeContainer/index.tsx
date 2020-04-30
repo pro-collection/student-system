@@ -3,6 +3,7 @@ import { Button, Select, Input } from 'antd';
 import { connect } from 'react-redux';
 import { StateModels } from '../../store/interface';
 import { CountAction, CountState } from '../../store/models/count';
+import { getSceneInfo } from '@src/server';
 
 const { Option } = Select;
 
@@ -22,6 +23,10 @@ const HomeContainer: FC<Props> = props => {
   const [name, updateName] = useState<string>('');
 
   useEffect(() => {
+    getSceneInfo(12).then(res => {
+      console.log('res', res);
+    });
+
     console.log(name);
     return () => {
       console.log('componentWillUnmount');
@@ -84,7 +89,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   countDispatch: dispatch.count,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
