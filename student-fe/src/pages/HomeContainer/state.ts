@@ -1,9 +1,13 @@
 import { StateModels } from '@src/store/interface';
 
-export const homeState = ({ count }: StateModels) => ({
-  countState: count,
-});
+export const homeState = ({ student }: StateModels) => {
+  return {
+    studentState: student,
+  };
+};
 
-export const homeDispatch = (dispatch: any) => ({
-  countDispatch: dispatch.count,
-});
+export const homeDispatch = (dispatch: any) => {
+  return {
+    getListEffect: dispatch.student.getListEffect,
+  };
+};

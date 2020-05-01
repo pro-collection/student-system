@@ -1,2 +1,4 @@
-export { default as count } from './count';
-export { default as student } from './student';
+import count from './count';
+import student from './student';
+
+export { count, student };

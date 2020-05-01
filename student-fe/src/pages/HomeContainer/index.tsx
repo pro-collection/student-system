@@ -1,18 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row } from 'antd';
-import { CountAction, CountState } from '@src/store/models/count';
 import { homeDispatch, homeState } from '@src/pages/HomeContainer/state';
 import SidebarMenu from '@src/components/SidebarMenu';
 import MainTable from '@src/pages/HomeContainer/components/MainTable';
 import SearchInput from '@src/pages/HomeContainer/components/SearchInput';
+import { HomeInterface } from '@src/pages/HomeContainer/interface';
 
-interface Props {
-  countState: CountState;
-  countDispatch: CountAction;
-}
+const HomeContainer: FC<HomeInterface> = props => {
+  useEffect(() => {
+    props.getListEffect(123);
+  }, []);
 
-const HomeContainer: FC<Props> = () => {
   return (
     <div>
       <h2>学生信息管理系统</h2>
