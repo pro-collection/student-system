@@ -1,4 +1,5 @@
 import { StateModels } from '@src/store/interface';
+import { StudentAction } from '@src/store/models/student/interface';
 
 export const homeState = ({ student }: StateModels) => {
   return {
@@ -6,8 +7,8 @@ export const homeState = ({ student }: StateModels) => {
   };
 };
 
-export const homeDispatch = (dispatch: any) => {
+export const homeDispatch = ({ student }: { student: StudentAction }) => {
   return {
-    getListEffect: dispatch.student.getListEffect,
+    getListEffect: student.getListEffect,
   };
 };
