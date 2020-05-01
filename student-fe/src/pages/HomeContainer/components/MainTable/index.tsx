@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Table, Tag } from 'antd';
+import { Table } from 'antd';
 
 const MainTable: FC = () => {
   const columns = [
@@ -15,34 +15,39 @@ const MainTable: FC = () => {
       render: (text: string) => <a>{text}</a>,
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: '性别',
+      dataIndex: 'gender',
+      key: 'gender',
     },
     {
-      title: 'Address',
+      title: '电话号码',
+      dataIndex: 'phone',
+      key: 'phone',
+    },
+    {
+      title: '年级',
+      dataIndex: 'grade',
+      key: 'grade',
+    },
+    {
+      title: '班级',
+      dataIndex: 'classNumber',
+      key: 'classNumber',
+    },
+    {
+      title: '邮箱',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: '地址',
       dataIndex: 'address',
       key: 'address',
     },
     {
-      title: 'Tags',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (tags: string[]) => (
-        <span>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
-              color = 'volcano';
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </span>
-      ),
+      title: '出生年月日',
+      dataIndex: 'birthday',
+      key: 'birthday',
     },
     {
       title: 'Action',
@@ -58,6 +63,7 @@ const MainTable: FC = () => {
 
   const data = [
     {
+      key: '1',
       id: '1',
       name: 'John Brown',
       age: 32,
@@ -65,6 +71,7 @@ const MainTable: FC = () => {
       tags: ['nice', 'developer'],
     },
     {
+      key: '2',
       id: '2',
       name: 'Jim Green',
       age: 42,
@@ -72,6 +79,7 @@ const MainTable: FC = () => {
       tags: ['loser'],
     },
     {
+      key: '3',
       id: '3',
       name: 'Joe Black',
       age: 32,
