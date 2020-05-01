@@ -16,6 +16,7 @@ export interface StudentItem {
 export interface StudentState {
   studentList: StudentItem[];
   loading: boolean;
+  menuKey: string;
 }
 
 export interface StudentAction {

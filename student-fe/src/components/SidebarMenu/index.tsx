@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react';
+import { connect } from 'react-redux';
 import { Button, Menu } from 'antd';
+import { ClickParam } from 'antd/lib/menu';
 import {
   ArrowsAltOutlined,
   ShrinkOutlined,
@@ -9,16 +11,25 @@ import {
   UserDeleteOutlined,
   ProfileOutlined,
 } from '@ant-design/icons';
+import { sidebarMenuDispatch, sidebarMenuState } from '@src/components/SidebarMenu/consts';
+import { SidebarMenuProps } from '@src/components/SidebarMenu/interface';
 
-const SidebarMenu: FC = () => {
+const SidebarMenu: FC<SidebarMenuProps> = props => {
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => setCollapsed(!collapsed);
+
+  const handleClickMenu = (param: ClickParam) => {
+    props.updateDispatch({
+      menuKey: param.key,
+    });
+  };
+
   return (
     <div>
       <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
         {collapsed ? <ArrowsAltOutlined /> : <ShrinkOutlined />}
       </Button>
-      <Menu defaultSelectedKeys={['1']} mode="inline" theme="dark" inlineCollapsed={collapsed}>
+      <Menu onClick={handleClickMenu} selectedKeys={[props.studentState.menuKey]} mode="inline" theme="dark" inlineCollapsed={collapsed}>
         <Menu.Item key="1" icon={<FileSearchOutlined />}>
           查询学生信息
         </Menu.Item>
@@ -39,4 +50,4 @@ const SidebarMenu: FC = () => {
   );
 };
 
-export default SidebarMenu;
+export default connect(sidebarMenuState, sidebarMenuDispatch)(SidebarMenu);

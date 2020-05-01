@@ -1,7 +1,6 @@
 import { ModelConfig } from '@rematch/core';
 import { StudentState } from '@src/store/models/student/interface';
 import { studentDefault } from '@src/store/models/student/consts';
-import { StateModels } from '@src/store/interface';
 import { getList } from '@src/server';
 
 const student: ModelConfig<StudentState> = {

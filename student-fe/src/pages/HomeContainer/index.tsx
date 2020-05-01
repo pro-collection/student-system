@@ -1,8 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Col, Row } from 'antd';
 import { homeDispatch, homeState } from '@src/pages/HomeContainer/state';
-import SidebarMenu from '@src/components/SidebarMenu';
 import MainTable from '@src/pages/HomeContainer/components/MainTable';
 import SearchInput from '@src/pages/HomeContainer/components/SearchInput';
 import { HomeInterface } from '@src/pages/HomeContainer/interface';
@@ -23,15 +21,6 @@ const HomeContainer: FC<HomeInterface> = props => {
         <SearchInput />
         <MainTable studentList={props.studentState.studentList} loading={props.studentState.loading} />
       </LayoutContainer>
-
-      {/*<Row gutter={20}>*/}
-      {/*  <Col span={3}>*/}
-      {/*    <SidebarMenu />*/}
-      {/*  </Col>*/}
-      {/*  <Col span={21}>*/}
-      {/*  */}
-      {/*  </Col>*/}
-      {/*</Row>*/}
     </div>
   );
 };
