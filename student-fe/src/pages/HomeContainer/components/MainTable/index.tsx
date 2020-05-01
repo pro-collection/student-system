@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import { Table } from 'antd';
+import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
+import { StudentItem } from '@src/store/models/student/interface';
 
-const MainTable: FC = () => {
+const MainTable: FC<MainTableProps> = props => {
   const columns = [
     {
       title: '学号',
@@ -52,43 +54,29 @@ const MainTable: FC = () => {
     {
       title: 'Action',
       key: 'action',
-      render: (_: any, record: any) => (
+      render: (item: StudentItem) => (
         <span>
-          <a style={{ marginRight: 16 }}>Invite {record.name}</a>
-          <a>Delete</a>
+          <a
+            style={{ marginRight: 16 }}
+            onClick={() => {
+              console.log(item.name);
+            }}>
+            修改数据
+          </a>
+          <a>删除数据</a>
         </span>
       ),
     },
   ];
 
-  const data = [
-    {
-      key: '1',
-      id: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer'],
-    },
-    {
-      key: '2',
-      id: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser'],
-    },
-    {
-      key: '3',
-      id: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher'],
-    },
-  ];
-
-  return <Table bordered columns={columns} dataSource={data} />;
+  return (
+    <Table
+      bordered
+      loading={props.loading}
+      columns={columns}
+      dataSource={props.studentList.map(item => Object.assign({}, { ...item }, { key: item.id }))}
+    />
+  );
 };
 
 export default MainTable;

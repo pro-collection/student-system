@@ -24,7 +24,7 @@ const HomeContainer: FC<HomeInterface> = props => {
         </Col>
         <Col span={20}>
           <SearchInput />
-          <MainTable />
+          <MainTable studentList={props.studentState.studentList} loading={props.studentState.loading} />
         </Col>
       </Row>
     </div>

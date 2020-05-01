@@ -20,13 +20,18 @@ const student: ModelConfig<StudentState> = {
      * @param payload 这个是传入的产生值
      * @param student 这个是所有的状态的值
      */
-    async getListEffect(payload, { student }: StateModels) {
+    // async getListEffect(payload, { student }: StateModels) {
+    //   await this.updateDispatch({ loading: true });
+    //   const list = await getList();
+    //   this.updateDispatch({ loading: false });
+    //   this.updateDispatch({ studentList: list });
+    //   return list;
+    // },
+    async getListEffect() {
       await this.updateDispatch({ loading: true });
       const list = await getList();
       this.updateDispatch({ loading: false });
-      console.log('payload', payload);
-      console.log('student', student);
-      console.log('list', list);
+      this.updateDispatch({ studentList: list });
       return list;
     },
   },
