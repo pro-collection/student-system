@@ -16,9 +16,6 @@ import { SidebarMenuProps } from '@src/components/SidebarMenu/interface';
 import { withRouter } from 'react-router';
 
 const SidebarMenu: FC<SidebarMenuProps> = props => {
-  const [collapsed, setCollapsed] = useState(false);
-  const toggleCollapsed = () => setCollapsed(!collapsed);
-
   const handleClickMenu = (param: ClickParam) => {
     if (param.key === props.studentState.menuKey) return;
     props.updateDispatch({
@@ -41,10 +38,7 @@ const SidebarMenu: FC<SidebarMenuProps> = props => {
 
   return (
     <div>
-      <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
-        {collapsed ? <ArrowsAltOutlined /> : <ShrinkOutlined />}
-      </Button>
-      <Menu onClick={handleClickMenu} selectedKeys={[props.studentState.menuKey]} mode="inline" theme="dark" inlineCollapsed={collapsed}>
+      <Menu onClick={handleClickMenu} selectedKeys={[props.studentState.menuKey]} mode="inline" theme="dark">
         <Menu.Item key="1" icon={<FileSearchOutlined />}>
           查询学生信息
         </Menu.Item>
