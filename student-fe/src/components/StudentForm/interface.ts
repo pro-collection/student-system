@@ -1,7 +1,7 @@
 import { WrappedFormUtils } from 'antd/es/form/Form';
 
-export interface CreateFormProps {
+export interface StudentFormProps {
   form: WrappedFormUtils;
 }
 
-export interface CreateFormWrapperProps {}
+export interface StudentFormWrapperProps {}
