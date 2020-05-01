@@ -6,6 +6,7 @@ import SidebarMenu from '@src/components/SidebarMenu';
 import MainTable from '@src/pages/HomeContainer/components/MainTable';
 import SearchInput from '@src/pages/HomeContainer/components/SearchInput';
 import { HomeInterface } from '@src/pages/HomeContainer/interface';
+import LayoutContainer from '@src/components/LayoutContainer';
 
 const HomeContainer: FC<HomeInterface> = props => {
   useEffect(() => {
@@ -18,15 +19,19 @@ const HomeContainer: FC<HomeInterface> = props => {
     <div>
       <h2>学生信息管理系统</h2>
       <hr />
-      <Row gutter={20}>
-        <Col span={4}>
-          <SidebarMenu />
-        </Col>
-        <Col span={20}>
-          <SearchInput />
-          <MainTable studentList={props.studentState.studentList} loading={props.studentState.loading} />
-        </Col>
-      </Row>
+      <LayoutContainer>
+        <SearchInput />
+        <MainTable studentList={props.studentState.studentList} loading={props.studentState.loading} />
+      </LayoutContainer>
+
+      {/*<Row gutter={20}>*/}
+      {/*  <Col span={3}>*/}
+      {/*    <SidebarMenu />*/}
+      {/*  </Col>*/}
+      {/*  <Col span={21}>*/}
+      {/*  */}
+      {/*  </Col>*/}
+      {/*</Row>*/}
     </div>
   );
 };

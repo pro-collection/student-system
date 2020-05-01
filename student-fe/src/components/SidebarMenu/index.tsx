@@ -7,6 +7,7 @@ import {
   FileSearchOutlined,
   HighlightOutlined,
   UserDeleteOutlined,
+  ProfileOutlined,
 } from '@ant-design/icons';
 
 const SidebarMenu: FC = () => {
@@ -17,17 +18,20 @@ const SidebarMenu: FC = () => {
       <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
         {collapsed ? <ArrowsAltOutlined /> : <ShrinkOutlined />}
       </Button>
-      <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark" inlineCollapsed={collapsed}>
+      <Menu defaultSelectedKeys={['1']} mode="inline" theme="dark" inlineCollapsed={collapsed}>
         <Menu.Item key="1" icon={<FileSearchOutlined />}>
           查询学生信息
         </Menu.Item>
-        <Menu.Item key="2" icon={<UserAddOutlined />}>
+        <Menu.Item key="2" icon={<ProfileOutlined />}>
+          查询学生详细
+        </Menu.Item>
+        <Menu.Item key="3" icon={<UserAddOutlined />}>
           添加学生信息
         </Menu.Item>
-        <Menu.Item key="3" icon={<HighlightOutlined />}>
+        <Menu.Item key="4" icon={<HighlightOutlined />}>
           修改学生信息
         </Menu.Item>
-        <Menu.Item key="4" icon={<UserDeleteOutlined />}>
+        <Menu.Item key="5" icon={<UserDeleteOutlined />}>
           删除学生信息
         </Menu.Item>
       </Menu>
