@@ -68,7 +68,9 @@ const MainTable: FC<MainTableProps> = props => {
             }}>
             修改数据
           </Button>
-          <Button type={'danger'}>删除数据</Button>
+          <Button ghost type={'danger'}>
+            删除数据
+          </Button>
         </span>
       ),
     },

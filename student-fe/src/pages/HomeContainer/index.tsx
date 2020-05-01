@@ -8,7 +8,7 @@ import LayoutContainer from '@src/components/LayoutContainer';
 
 const HomeContainer: FC<HomeInterface> = props => {
   useEffect(() => {
-    props.getListEffect(123).then(res => {
+    props.getListEffect().then(res => {
       console.log('res', res);
     });
   }, []);
