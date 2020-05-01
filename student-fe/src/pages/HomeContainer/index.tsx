@@ -3,7 +3,7 @@ import { Button, Select, Input } from 'antd';
 import { connect } from 'react-redux';
 import { StateModels } from '../../store/interface';
 import { CountAction, CountState } from '../../store/models/count';
-import { getSceneInfo } from '@src/server';
+import { getList } from '@src/server';
 
 const { Option } = Select;
 
@@ -23,7 +23,7 @@ const HomeContainer: FC<Props> = props => {
   const [name, updateName] = useState<string>('');
 
   useEffect(() => {
-    getSceneInfo(12).then(res => {
+    getList(12).then(res => {
       console.log('res', res);
     });
 
