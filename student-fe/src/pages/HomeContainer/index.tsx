@@ -9,7 +9,9 @@ import { HomeInterface } from '@src/pages/HomeContainer/interface';
 
 const HomeContainer: FC<HomeInterface> = props => {
   useEffect(() => {
-    props.getListEffect(123);
+    props.getListEffect(123).then(res => {
+      console.log('res', res);
+    });
   }, []);
 
   return (

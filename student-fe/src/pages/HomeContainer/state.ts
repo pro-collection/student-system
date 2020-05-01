@@ -7,7 +7,7 @@ export const homeState = ({ student }: StateModels) => {
   };
 };
 
-export const homeDispatch = ({ student }: { student: StudentAction }) => {
+export const homeDispatch = ({ student }: { student: StudentAction }): any => {
   return {
     getListEffect: student.getListEffect,
   };

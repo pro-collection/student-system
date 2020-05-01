@@ -15,6 +15,7 @@ export interface StudentItem {
 
 export interface StudentState {
   studentList: StudentItem[];
+  loading: boolean;
 }
 
 export interface StudentAction {

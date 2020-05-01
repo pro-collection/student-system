@@ -7,7 +7,7 @@ import { getList } from '@src/server';
 const student: ModelConfig<StudentState> = {
   state: studentDefault,
   reducers: {
-    updateDispatch(state, payload: StudentState) {
+    updateDispatch(state, payload?: StudentState) {
       return {
         ...state,
         ...payload,
@@ -21,10 +21,13 @@ const student: ModelConfig<StudentState> = {
      * @param student 这个是所有的状态的值
      */
     async getListEffect(payload, { student }: StateModels) {
+      await this.updateDispatch({ loading: true });
       const list = await getList();
+      this.updateDispatch({ loading: false });
       console.log('payload', payload);
       console.log('student', student);
       console.log('list', list);
+      return list;
     },
   },
 };
