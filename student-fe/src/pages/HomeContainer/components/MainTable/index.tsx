@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Button, Table } from 'antd';
 import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
 import { StudentItem } from '@src/store/models/student/interface';
+import dayjs from 'dayjs';
+import { DATE_FORMAT } from '../../../../consts';
 
 const MainTable: FC<MainTableProps> = props => {
   const columns = [
@@ -50,6 +52,9 @@ const MainTable: FC<MainTableProps> = props => {
       title: '出生年月日',
       dataIndex: 'birthday',
       key: 'birthday',
+      render: (item: StudentItem) => {
+        return dayjs(item.birthday).format(DATE_FORMAT);
+      },
     },
     {
       title: 'Action',
