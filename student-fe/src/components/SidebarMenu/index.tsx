@@ -13,15 +13,30 @@ import {
 } from '@ant-design/icons';
 import { sidebarMenuDispatch, sidebarMenuState } from '@src/components/SidebarMenu/consts';
 import { SidebarMenuProps } from '@src/components/SidebarMenu/interface';
+import { withRouter } from 'react-router';
 
 const SidebarMenu: FC<SidebarMenuProps> = props => {
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => setCollapsed(!collapsed);
 
   const handleClickMenu = (param: ClickParam) => {
+    if (param.key === props.studentState.menuKey) return;
     props.updateDispatch({
       menuKey: param.key,
     });
+
+    switch (param.key) {
+      case '1':
+        return props.history.push('/');
+      case '2':
+        return props.history.push('/info');
+      case '3':
+        return props.history.push('/add');
+      case '4':
+        return props.history.push('/modify');
+      case '5':
+        return props.history.push('/delete');
+    }
   };
 
   return (
@@ -50,4 +65,4 @@ const SidebarMenu: FC<SidebarMenuProps> = props => {
   );
 };
 
-export default connect(sidebarMenuState, sidebarMenuDispatch)(SidebarMenu);
+export default withRouter(connect(sidebarMenuState, sidebarMenuDispatch)(SidebarMenu));
