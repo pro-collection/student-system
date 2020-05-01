@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
 import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
 import { StudentItem } from '@src/store/models/student/interface';
 
@@ -56,14 +56,14 @@ const MainTable: FC<MainTableProps> = props => {
       key: 'action',
       render: (item: StudentItem) => (
         <span>
-          <a
+          <Button
             style={{ marginRight: 16 }}
             onClick={() => {
               console.log(item.name);
             }}>
             修改数据
-          </a>
-          <a>删除数据</a>
+          </Button>
+          <Button danger>删除数据</Button>
         </span>
       ),
     },
