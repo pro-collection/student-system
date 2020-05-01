@@ -12,12 +12,10 @@ interface ExportPages {
 
 const HomeContainer = () => import('../pages/HomeContainer');
 const NoMatchContainer = () => import('../pages/NoMatchContainer');
-const Counter = () => import('../pages/Counter');
 
 const pages: Pages = {
   HomeContainer,
   NoMatchContainer,
-  Counter,
 };
 
 const exportPages: ExportPages = {};
