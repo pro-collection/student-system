@@ -2,9 +2,8 @@ import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
-import { UserAddOutlined, FileSearchOutlined, HighlightOutlined, UserDeleteOutlined, ProfileOutlined } from '@ant-design/icons';
 import { sidebarMenuDispatch, sidebarMenuState } from '@src/components/SidebarMenu/consts';
-import { SidebarMenuProps } from '@src/components/SidebarMenu/interface';
+import { SidebarMenuProps, SidebarMenuWrapperProps } from '@src/components/SidebarMenu/interface';
 import { withRouter } from 'react-router';
 
 const SidebarMenu: FC<SidebarMenuProps> = props => {
@@ -31,24 +30,14 @@ const SidebarMenu: FC<SidebarMenuProps> = props => {
   return (
     <div>
       <Menu onClick={handleClickMenu} selectedKeys={[props.studentState.menuKey]} mode="inline" theme="dark">
-        <Menu.Item key="1" icon={<FileSearchOutlined />}>
-          查询学生信息
-        </Menu.Item>
-        <Menu.Item key="2" icon={<ProfileOutlined />}>
-          查询学生详细
-        </Menu.Item>
-        <Menu.Item key="3" icon={<UserAddOutlined />}>
-          添加学生信息
-        </Menu.Item>
-        <Menu.Item key="4" icon={<HighlightOutlined />}>
-          修改学生信息
-        </Menu.Item>
-        <Menu.Item key="5" icon={<UserDeleteOutlined />}>
-          删除学生信息
-        </Menu.Item>
+        <Menu.Item key="1">查询学生信息</Menu.Item>
+        <Menu.Item key="2">查询学生详细</Menu.Item>
+        <Menu.Item key="3">添加学生信息</Menu.Item>
+        <Menu.Item key="4">修改学生信息</Menu.Item>
+        <Menu.Item key="5">删除学生信息</Menu.Item>
       </Menu>
     </div>
   );
 };
 
-export default withRouter(connect(sidebarMenuState, sidebarMenuDispatch)(SidebarMenu));
+export default (withRouter(connect(sidebarMenuState, sidebarMenuDispatch)(SidebarMenu)) as unknown) as FC<SidebarMenuWrapperProps>;

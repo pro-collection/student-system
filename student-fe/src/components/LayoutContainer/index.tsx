@@ -4,13 +4,11 @@ import SidebarMenu from '@src/components/SidebarMenu';
 
 const LayoutContainer: FC = props => {
   return (
-    <Row gutter={20}>
+    <Row gutter={20} style={{ paddingRight: '30px' }}>
       <Col span={3}>
         <SidebarMenu />
       </Col>
-      <Col style={{ paddingRight: '30px' }} span={21}>
-        {props.children}
-      </Col>
+      <Col span={21}>{props.children}</Col>
     </Row>
   );
 };
