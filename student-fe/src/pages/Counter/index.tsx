@@ -42,7 +42,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   countAction: dispatch.count,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

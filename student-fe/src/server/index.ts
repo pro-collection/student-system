@@ -1,6 +1,4 @@
-import * as utils from '@src/utils';
-
-const { axios } = utils;
+import { axios } from '@src/utils';
 
 export const getList = (id: number) => {
   return axios({
