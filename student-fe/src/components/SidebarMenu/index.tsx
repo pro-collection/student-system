@@ -1,16 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { connect } from 'react-redux';
-import { Button, Menu } from 'antd';
+import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
-import {
-  ArrowsAltOutlined,
-  ShrinkOutlined,
-  UserAddOutlined,
-  FileSearchOutlined,
-  HighlightOutlined,
-  UserDeleteOutlined,
-  ProfileOutlined,
-} from '@ant-design/icons';
+import { UserAddOutlined, FileSearchOutlined, HighlightOutlined, UserDeleteOutlined, ProfileOutlined } from '@ant-design/icons';
 import { sidebarMenuDispatch, sidebarMenuState } from '@src/components/SidebarMenu/consts';
 import { SidebarMenuProps } from '@src/components/SidebarMenu/interface';
 import { withRouter } from 'react-router';
