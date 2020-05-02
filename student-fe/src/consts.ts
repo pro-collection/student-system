@@ -10,3 +10,8 @@ export const FORM_ITEM_LAYOUT = {
     sm: { span: 20 },
   },
 };
+
+export enum FormType {
+  add = 1,
+  update,
+}
