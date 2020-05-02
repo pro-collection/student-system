@@ -21,6 +21,9 @@ export const postStudentApi = (formData: StudentItem) => {
     data: formData,
     method: 'post',
   })
-    .then((res: object) => res)
+    .then((res: object) => {
+      message.success('添加学成成功');
+      return res;
+    })
     .catch(() => message.error('添加学生失败， 请重试'));
 };

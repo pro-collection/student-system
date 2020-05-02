@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
-import { toString } from 'lodash';
+import { toString, isEmpty } from 'lodash';
 import moment from 'moment';
 import { FORM_ITEM_LAYOUT } from '@src/consts';
 import { StudentFormProps } from './interface';
@@ -13,7 +13,8 @@ const StudentForm: FC<StudentFormProps> = props => {
   const { getFieldDecorator } = props.form;
 
   const handleSubmit = () => {
-    props.form.validateFieldsAndScroll((err, values) => {
+    const { validateFieldsAndScroll, resetFields } = props.form;
+    validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
 
@@ -21,10 +22,8 @@ const StudentForm: FC<StudentFormProps> = props => {
         if (values.birthday) values.birthday = moment(values.birthday).valueOf();
 
         // 提交
-        postStudentApi(values).then(res => {
-          console.log('创建成功: ', res);
-          // window.location.reload();
-        });
+        const res = await postStudentApi(values);
+        if (!isEmpty(res)) resetFields();
       }
     });
   };
