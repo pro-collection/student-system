@@ -3,14 +3,14 @@ import { Button, Table } from 'antd';
 import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
 import { StudentItem } from '@src/store/models/student/interface';
 import dayjs from 'dayjs';
-import { DATE_FORMAT } from '../../../../consts';
+import { DATE_FORMAT } from '@src/consts';
 
 const MainTable: FC<MainTableProps> = props => {
   const columns = [
     {
       title: '学号',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'number',
+      key: 'number',
     },
     {
       title: '姓名',
@@ -22,6 +22,10 @@ const MainTable: FC<MainTableProps> = props => {
       title: '性别',
       dataIndex: 'gender',
       key: 'gender',
+      render: (gender: number) => {
+        if (gender === 1) return '男';
+        return '女';
+      },
     },
     {
       title: '电话号码',
