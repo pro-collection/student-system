@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
-import { toString, isEmpty } from 'lodash';
+import { get, isEmpty, toString } from 'lodash';
 import moment from 'moment';
-import { FORM_ITEM_LAYOUT } from '@src/consts';
-import { StudentFormProps } from './interface';
+import { FORM_ITEM_LAYOUT, FormType } from '@src/consts';
+import { StudentFormProps, StudentFormWrapperProps } from './interface';
 import styles from './style.less';
 import { postStudentApi } from '@src/server';
 
@@ -37,6 +37,7 @@ const StudentForm: FC<StudentFormProps> = props => {
         <Col span={12}>
           <Form.Item label="学号">
             {getFieldDecorator('number', {
+              initialValue: get(props.currentStudentInfo, 'number'),
               rules: [
                 {
                   required: true,
@@ -56,6 +57,7 @@ const StudentForm: FC<StudentFormProps> = props => {
         <Col span={12}>
           <Form.Item label="姓名">
             {getFieldDecorator('name', {
+              initialValue: get(props.currentStudentInfo, 'name'),
               rules: [
                 {
                   required: true,
@@ -69,6 +71,7 @@ const StudentForm: FC<StudentFormProps> = props => {
         <Col span={12}>
           <Form.Item label="性别">
             {getFieldDecorator('gender', {
+              initialValue: get(props.currentStudentInfo, 'gender'),
               rules: [
                 {
                   required: true,
@@ -87,6 +90,7 @@ const StudentForm: FC<StudentFormProps> = props => {
         <Col span={12}>
           <Form.Item label="电话号码">
             {getFieldDecorator('phone', {
+              initialValue: get(props.currentStudentInfo, 'phone'),
               rules: [
                 {
                   required: true,
@@ -105,7 +109,11 @@ const StudentForm: FC<StudentFormProps> = props => {
 
         <Col span={12}>
           <Form.Item label="年级">
-            {getFieldDecorator('grade')(
+            {getFieldDecorator('grade', {
+              initialValue: get(props.currentStudentInfo, 'grade', undefined)
+                ? toString(get(props.currentStudentInfo, 'grade'))
+                : undefined,
+            })(
               <Select placeholder="请选择年级">
                 <Option value="1">大一</Option>
                 <Option value="2">大二</Option>
@@ -118,13 +126,16 @@ const StudentForm: FC<StudentFormProps> = props => {
 
         <Col span={12}>
           <Form.Item label="班级">
-            {getFieldDecorator('classNumber')(<InputNumber placeholder={'请输入班级'} style={{ width: '100%' }} />)}
+            {getFieldDecorator('classNumber', {
+              initialValue: get(props.currentStudentInfo, 'classNumber'),
+            })(<InputNumber placeholder={'请输入班级'} style={{ width: '100%' }} />)}
           </Form.Item>
         </Col>
 
         <Col span={12}>
           <Form.Item label="邮箱">
             {getFieldDecorator('email', {
+              initialValue: get(props.currentStudentInfo, 'email'),
               rules: [
                 {
                   type: 'email',
@@ -136,27 +147,35 @@ const StudentForm: FC<StudentFormProps> = props => {
         </Col>
 
         <Col span={12}>
-          <Form.Item label="家庭地址">{getFieldDecorator('address')(<Input placeholder="请输入家庭地址" />)}</Form.Item>
+          <Form.Item label="家庭地址">
+            {getFieldDecorator('address', {
+              initialValue: get(props.currentStudentInfo, 'address'),
+            })(<Input placeholder="请输入家庭地址" />)}
+          </Form.Item>
         </Col>
 
         <Col span={12}>
           <Form.Item label="出生日期">
-            {getFieldDecorator('birthday')(<DatePicker style={{ width: '100%' }} placeholder="请选择出生日期" />)}
+            {getFieldDecorator('birthday', {
+              initialValue: get(props.currentStudentInfo, 'birthday') ? moment(get(props.currentStudentInfo, 'birthday')) : undefined,
+            })(<DatePicker style={{ width: '100%' }} placeholder="请选择出生日期" />)}
           </Form.Item>
         </Col>
       </Row>
 
       <div className={styles['submit-container']}>
         <Button type="primary" onClick={handleSubmit}>
-          确认
+          {props.userType === FormType.update ? '更新' : '添加'}
         </Button>
 
-        <Button type="danger" ghost className="ml24" onClick={handleRest}>
-          重置
-        </Button>
+        {props.userType === FormType.add && (
+          <Button type="danger" ghost className="ml24" onClick={handleRest}>
+            重置
+          </Button>
+        )}
       </div>
     </Form>
   );
 };
 
-export default Form.create()(StudentForm);
+export default (Form.create()(StudentForm) as unknown) as FC<StudentFormWrapperProps>;

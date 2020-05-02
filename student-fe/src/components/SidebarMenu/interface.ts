@@ -1,14 +1,10 @@
 import { StudentState } from '@src/store/models/student/interface';
 import { RematchDispatcher } from '@rematch/core';
-import * as H from 'history';
-import { match } from 'react-router';
+import { RouterInfo } from '@src/interface';
 
-export interface SidebarMenuProps extends SidebarMenuWrapperProps {
+export interface SidebarMenuProps extends SidebarMenuWrapperProps, RouterInfo {
   studentState: StudentState;
   updateDispatch: RematchDispatcher;
-  history: H.History;
-  location: H.Location;
-  match: match;
 }
 
 export interface SidebarMenuWrapperProps {}

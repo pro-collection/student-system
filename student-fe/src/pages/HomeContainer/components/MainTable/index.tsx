@@ -111,7 +111,10 @@ const MainTable: FC<MainTableProps> = props => {
           <Button
             style={{ marginRight: 16 }}
             onClick={() => {
-              console.log(item.name);
+              if (props.history)
+                props.history.push(`/modify/?id=${item.id}`, {
+                  key: '4',
+                });
             }}>
             修改数据
           </Button>

@@ -3,6 +3,7 @@ import { RematchDispatcher, RematchDispatcherAsync } from '@rematch/core';
 export interface StudentItem {
   id: number;
   name: string;
+  number: number;
   gender: string;
   phone: string;
   age?: number;

@@ -17,7 +17,12 @@ const HomeContainer: FC<HomeInterface> = props => {
       <hr />
       <LayoutContainer>
         <SearchInput />
-        <MainTable getListEffect={props.getListEffect} studentList={props.studentState.studentList} loading={props.studentState.loading} />
+        <MainTable
+          history={props.history}
+          getListEffect={props.getListEffect}
+          studentList={props.studentState.studentList}
+          loading={props.studentState.loading}
+        />
       </LayoutContainer>
     </div>
   );
