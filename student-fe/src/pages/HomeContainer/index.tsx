@@ -1,17 +1,29 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { CountAction, CountState } from '@src/store/models/count';
 import { homeDispatch, homeState } from '@src/pages/HomeContainer/state';
+import MainTable from '@src/pages/HomeContainer/components/MainTable';
+import SearchInput from '@src/pages/HomeContainer/components/SearchInput';
+import { HomeInterface } from '@src/pages/HomeContainer/interface';
+import LayoutContainer from '@src/components/LayoutContainer';
 
-interface Props {
-  countState: CountState;
-  countDispatch: CountAction;
-}
+const HomeContainer: FC<HomeInterface> = props => {
+  useEffect(() => {
+    props.getListEffect();
+  }, []);
 
-const HomeContainer: FC<Props> = () => {
   return (
     <div>
       <h2>学生信息管理系统</h2>
+      <hr />
+      <LayoutContainer>
+        <SearchInput getListEffect={props.getListEffect} />
+        <MainTable
+          history={props.history}
+          getListEffect={props.getListEffect}
+          studentList={props.studentState.studentList}
+          loading={props.studentState.loading}
+        />
+      </LayoutContainer>
     </div>
   );
 };

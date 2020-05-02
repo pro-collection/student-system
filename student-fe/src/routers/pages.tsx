@@ -12,12 +12,18 @@ interface ExportPages {
 
 const HomeContainer = () => import('../pages/HomeContainer');
 const NoMatchContainer = () => import('../pages/NoMatchContainer');
-const Counter = () => import('../pages/Counter');
+const AddStudent = () => import('../pages/AddStudent');
+const DeleteStudent = () => import('../pages/DeleteStudent');
+const ModifyStudent = () => import('../pages/ModifyStudent');
+const StudentInfo = () => import('../pages/StudentInfo');
 
 const pages: Pages = {
   HomeContainer,
   NoMatchContainer,
-  Counter,
+  AddStudent,
+  DeleteStudent,
+  ModifyStudent,
+  StudentInfo,
 };
 
 const exportPages: ExportPages = {};

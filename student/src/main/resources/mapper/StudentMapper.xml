@@ -3,6 +3,7 @@
 <mapper namespace="com.system.student.mapper.StudentMapper">
   <resultMap id="BaseResultMap" type="com.system.student.model.Student">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="number" jdbcType="BIGINT" property="number" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="gender" jdbcType="CHAR" property="gender" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, gender, phone, age, grade, class_number, email, address, birthday
+    id, number, name, gender, phone, age, grade, class_number, email, address, birthday
   </sql>
   <select id="selectByExample" parameterType="com.system.student.model.StudentExample" resultMap="BaseResultMap">
     select
@@ -88,11 +89,26 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectByQuery" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where name = #{query} or number=#{query,jdbcType=BIGINT} or phone=#{query,jdbcType=BIGINT}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from student
     where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByNumber" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where number = #{number,jdbcType=BIGINT}
+    limit 1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from student
@@ -123,6 +139,9 @@
     </selectKey>
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="number != null">
+        number,
+      </if>
       <if test="name != null">
         name,
       </if>
@@ -152,6 +171,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="number != null">
+        #{number,jdbcType=BIGINT},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
@@ -193,6 +215,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
+      <if test="record.number != null">
+        number = #{record.number,jdbcType=BIGINT},
+      </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -228,6 +253,7 @@
   <update id="updateByExample" parameterType="map">
     update student
     set id = #{record.id,jdbcType=BIGINT},
+      number = #{record.number,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=CHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
@@ -244,6 +270,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.system.student.model.Student">
     update student
     <set>
+      <if test="number != null">
+        number = #{number,jdbcType=BIGINT},
+      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -276,7 +305,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.system.student.model.Student">
     update student
-    set name = #{name,jdbcType=VARCHAR},
+    set number = #{number,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=CHAR},
       phone = #{phone,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},

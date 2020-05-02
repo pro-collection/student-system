@@ -6,4 +6,16 @@ import java.util.List;
 
 public interface StudentService {
     List<Student> findList(Integer pageSize, Integer pageNumber);
+
+    List<Student> findListByQuery(String query, Integer pageSize, Integer pageNumber);
+
+    Student getStudentById(Long id);
+
+    Integer createStudent(Student student);
+
+    Student getStudentByNumber(Long number);
+
+    Integer deleteById(Long id);
+
+    Integer update(Student student);
 }

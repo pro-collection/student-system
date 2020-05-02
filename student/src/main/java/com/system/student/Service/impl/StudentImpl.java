@@ -20,4 +20,35 @@ public class StudentImpl implements StudentService {
         PageHelper.startPage(pageNumber, pageSize);
         return studentMapper.selectByExample(new StudentExample());
     }
+
+    @Override
+    public List<Student> findListByQuery(String query, Integer pageSize, Integer pageNumber) {
+        PageHelper.startPage(pageNumber, pageSize);
+        return studentMapper.selectByQuery(query);
+    }
+
+    @Override
+    public Student getStudentById(Long id) {
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Integer createStudent(Student student) {
+        return studentMapper.insertSelective(student);
+    }
+
+    @Override
+    public Student getStudentByNumber(Long number) {
+        return studentMapper.selectByNumber(number);
+    }
+
+    @Override
+    public Integer deleteById(Long id) {
+        return studentMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public Integer update(Student student) {
+        return studentMapper.updateByPrimaryKey(student);
+    }
 }
