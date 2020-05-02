@@ -15,7 +15,7 @@ const SearchInput: FC<SearchInputProps> = props => {
           query: searchValue,
         });
       }}
-      placeholder="按 学号、姓名 搜索"
+      placeholder="按 学号、姓名、电话号码 搜索"
     />
   );
 };
