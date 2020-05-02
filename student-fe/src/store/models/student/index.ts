@@ -28,9 +28,9 @@ const student: ModelConfig<StudentState> = {
     //   this.updateDispatch({ studentList: list });
     //   return list;
     // },
-    async getListEffect() {
+    async getListEffect(payload: { query: string }) {
       await this.updateDispatch({ loading: true });
-      const responseData = await getList();
+      const responseData = await getList(payload);
       const code = get(responseData, 'code');
       const list = get(responseData, 'data', []) || [];
       const messageString = get(responseData, 'message', '');

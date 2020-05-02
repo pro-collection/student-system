@@ -16,7 +16,7 @@ const HomeContainer: FC<HomeInterface> = props => {
       <h2>学生信息管理系统</h2>
       <hr />
       <LayoutContainer>
-        <SearchInput />
+        <SearchInput getListEffect={props.getListEffect} />
         <MainTable
           history={props.history}
           getListEffect={props.getListEffect}

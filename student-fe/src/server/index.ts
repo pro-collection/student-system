@@ -4,12 +4,10 @@ import { message } from 'antd';
 import { ApiResponse } from '@src/server/interface';
 
 // 获取列表
-export const getList = (id?: number) => {
+export const getList = (params?: any) => {
   return axios({
     url: '/api/student/list/',
-    params: {
-      sceneId: id,
-    },
+    params,
   })
     .then((res: object) => res)
     .catch((err: object) => err);
