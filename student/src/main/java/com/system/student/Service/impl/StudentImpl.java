@@ -40,4 +40,9 @@ public class StudentImpl implements StudentService {
     public Integer deleteById(Long id) {
         return studentMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public Integer update(Student student) {
+        return studentMapper.updateByPrimaryKey(student);
+    }
 }

@@ -3,7 +3,9 @@ package com.system.student.controller;
 import com.system.student.Service.StudentService;
 import com.system.student.common.api.CommonResult;
 import com.system.student.model.Student;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,5 +38,16 @@ public class StudentController {
         Integer count = studentService.deleteById(id);
         if (count != 0) return CommonResult.success(true, "删除成功");
         return CommonResult.failed("删除学生信息失败");
+    }
+
+    @PutMapping("/{id}")
+    public CommonResult<Boolean> put(@PathVariable Long id, @RequestBody Student student) {
+        Student newStudent = new Student();
+        newStudent.setId(id);
+        BeanUtils.copyProperties(student, newStudent);
+        Integer count = studentService.update(student);
+        if (count != 0) return CommonResult.success(true, "更新学生信息成功");
+        return CommonResult.failed("更新学生信息失败");
+
     }
 }
