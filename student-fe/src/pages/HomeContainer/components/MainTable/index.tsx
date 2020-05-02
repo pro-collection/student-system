@@ -22,8 +22,8 @@ const MainTable: FC<MainTableProps> = props => {
       title: '性别',
       dataIndex: 'gender',
       key: 'gender',
-      render: (gender: number) => {
-        if (gender === 1) return '男';
+      render: (gender: string) => {
+        if (gender === '1') return '男';
         return '女';
       },
     },

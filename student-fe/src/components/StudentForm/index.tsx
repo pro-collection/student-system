@@ -23,6 +23,7 @@ const StudentForm: FC<StudentFormProps> = props => {
         // 提交
         postStudentApi(values).then(res => {
           console.log('创建成功: ', res);
+          // window.location.reload();
         });
       }
     });
