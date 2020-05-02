@@ -94,7 +94,7 @@
     select
     <include refid="Base_Column_List" />
     from student
-    where name = #{query} or id=#{query, }
+    where name = #{query} or number=#{query,jdbcType=BIGINT} or phone=#{query,jdbcType=BIGINT}
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
