@@ -11,7 +11,8 @@ import { infoState } from '@src/pages/StudentInfo/state';
 const StudentInfo: FC<StudentInfoProps> = props => {
   // @ts-ignore
   const id: string = get(queryString.parse(props.history.location.search), 'id', '') || '';
-  const currentStudentInfo: StudentItem | undefined = props.studentState.studentList.find(item => toString(item.id) === id);
+  // @ts-ignore
+  const currentStudentInfo: StudentItem = props.studentState.studentList.find(item => toString(item.id) === id);
   return (
     <div>
       <h2>学生信息管理系统 - 学生基础信息查看</h2>
