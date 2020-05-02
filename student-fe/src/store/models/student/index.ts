@@ -1,9 +1,9 @@
 import { ModelConfig } from '@rematch/core';
 import { get } from 'lodash';
+import { message } from 'antd';
 import { StudentState } from '@src/store/models/student/interface';
 import { studentDefault } from '@src/store/models/student/consts';
 import { getList } from '@src/server';
-import { message } from 'antd';
 
 const student: ModelConfig<StudentState> = {
   state: studentDefault,
@@ -33,13 +33,13 @@ const student: ModelConfig<StudentState> = {
       const responseData = await getList();
       const code = get(responseData, 'code');
       const list = get(responseData, 'data', []) || [];
-      const message = get(responseData, 'message', '');
+      const messageString = get(responseData, 'message', '');
       if (code === 200) {
         this.updateDispatch({ loading: false });
         this.updateDispatch({ studentList: list });
         return list;
       }
-      return message.error(message || '获取学生列表失败');
+      return message.error(messageString || '获取学生列表失败');
     },
   },
 };
