@@ -110,6 +110,18 @@ const MainTable: FC<MainTableProps> = props => {
         <span>
           <Button
             style={{ marginRight: 16 }}
+            type="primary"
+            onClick={() => {
+              if (props.history) {
+                props.history.push(`/info/?id=${item.id}`, {
+                  key: '2',
+                });
+              }
+            }}>
+            详情
+          </Button>
+          <Button
+            style={{ marginRight: 16 }}
             onClick={() => {
               if (props.history)
                 props.history.push(`/modify/?id=${item.id}`, {
