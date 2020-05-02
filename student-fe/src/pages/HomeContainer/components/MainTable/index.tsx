@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Button, Table } from 'antd';
 import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
 import { StudentItem } from '@src/store/models/student/interface';
-import dayjs from 'dayjs';
+import moment from 'moment';
 import { DATE_FORMAT } from '@src/consts';
 
 const MainTable: FC<MainTableProps> = props => {
@@ -36,28 +36,55 @@ const MainTable: FC<MainTableProps> = props => {
       title: '年级',
       dataIndex: 'grade',
       key: 'grade',
+      render: (grade: number) => {
+        switch (grade) {
+          case 1:
+            return '大一';
+          case 2:
+            return '大二';
+          case 3:
+            return '大三';
+          case 4:
+            return '大四';
+          default:
+            return '-';
+        }
+      },
     },
     {
       title: '班级',
       dataIndex: 'classNumber',
       key: 'classNumber',
+      render: (classNumber: number) => {
+        if (classNumber) return classNumber;
+        return '-';
+      },
     },
     {
       title: '邮箱',
       dataIndex: 'email',
       key: 'email',
+      render: (email: string) => {
+        if (email) return email;
+        return '-';
+      },
     },
     {
       title: '地址',
       dataIndex: 'address',
       key: 'address',
+      render: (address: string) => {
+        if (address) return address;
+        return '-';
+      },
     },
     {
       title: '出生年月日',
       dataIndex: 'birthday',
       key: 'birthday',
-      render: (item: StudentItem) => {
-        return dayjs(item.birthday).format(DATE_FORMAT);
+      render: (birthday: number) => {
+        if (birthday) return moment(birthday).format(DATE_FORMAT);
+        return '-';
       },
     },
     {

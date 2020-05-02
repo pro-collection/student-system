@@ -38,7 +38,7 @@ const StudentForm: FC<StudentFormProps> = props => {
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item label="学号">
-            {getFieldDecorator('id', {
+            {getFieldDecorator('number', {
               rules: [
                 {
                   required: true,
