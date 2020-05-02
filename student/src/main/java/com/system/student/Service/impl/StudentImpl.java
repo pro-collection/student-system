@@ -22,6 +22,12 @@ public class StudentImpl implements StudentService {
     }
 
     @Override
+    public List<Student> findListByQuery(String query, Integer pageSize, Integer pageNumber) {
+        PageHelper.startPage(pageNumber, pageSize);
+        return studentMapper.selectByQuery(query);
+    }
+
+    @Override
     public Student getStudentById(Long id) {
         return studentMapper.selectByPrimaryKey(id);
     }

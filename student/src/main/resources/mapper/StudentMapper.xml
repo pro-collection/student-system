@@ -89,6 +89,14 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectByQuery" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where name = #{query} or id=#{query, }
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
