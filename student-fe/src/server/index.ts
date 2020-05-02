@@ -18,7 +18,7 @@ export const getList = (id?: number) => {
 export const postStudentApi = (formData: StudentItem) => {
   return axios({
     url: '/api/student/create',
-    params: formData,
+    data: formData,
     method: 'post',
   })
     .then((res: object) => res)
