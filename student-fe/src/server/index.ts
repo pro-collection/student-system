@@ -1,6 +1,7 @@
 import { axios } from '@src/utils';
 import { StudentItem } from '@src/store/models/student/interface';
 import { message } from 'antd';
+import { ApiResponse } from '@src/server/interface';
 
 // 获取列表
 export const getList = (id?: number) => {
@@ -21,7 +22,10 @@ export const postStudentApi = (formData: StudentItem) => {
     data: formData,
     method: 'post',
   })
-    .then((res: object) => {
+    .then((res: ApiResponse) => {
+      if (res.code !== 200) {
+        return message.error(res.message);
+      }
       message.success('添加学成成功');
       return res;
     })
