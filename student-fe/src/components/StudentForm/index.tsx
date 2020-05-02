@@ -16,8 +16,6 @@ const StudentForm: FC<StudentFormProps> = props => {
     const { validateFieldsAndScroll, resetFields } = props.form;
     validateFieldsAndScroll(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-
         // 特殊处理日期
         if (values.birthday) values.birthday = moment(values.birthday).valueOf();
 

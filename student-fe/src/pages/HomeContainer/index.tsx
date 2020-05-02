@@ -8,9 +8,7 @@ import LayoutContainer from '@src/components/LayoutContainer';
 
 const HomeContainer: FC<HomeInterface> = props => {
   useEffect(() => {
-    props.getListEffect().then(res => {
-      console.log('res', res);
-    });
+    props.getListEffect();
   }, []);
 
   return (
@@ -19,7 +17,7 @@ const HomeContainer: FC<HomeInterface> = props => {
       <hr />
       <LayoutContainer>
         <SearchInput />
-        <MainTable studentList={props.studentState.studentList} loading={props.studentState.loading} />
+        <MainTable getListEffect={props.getListEffect} studentList={props.studentState.studentList} loading={props.studentState.loading} />
       </LayoutContainer>
     </div>
   );

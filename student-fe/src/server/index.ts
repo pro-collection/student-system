@@ -31,3 +31,22 @@ export const postStudentApi = (formData: StudentItem) => {
     })
     .catch(() => message.error('添加学生失败， 请重试'));
 };
+
+// 删除表单
+export const deleteStudentApi = (id: number) => {
+  return axios({
+    url: `/api/student/${id}`,
+    method: 'delete',
+  })
+    .then((res: ApiResponse) => {
+      if (res.code === 200 && res.data) {
+        message.success('删除学生信息成功');
+      } else {
+        message.error('删除学生信息失败');
+      }
+      return res;
+    })
+    .catch(() => {
+      message.error('删除学生信息失败');
+    });
+};
