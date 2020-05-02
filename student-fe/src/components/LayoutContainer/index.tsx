@@ -1,14 +1,17 @@
 import React, { FC } from 'react';
 import { Col, Row } from 'antd';
 import SidebarMenu from '@src/components/SidebarMenu';
+import styles from './style.less';
 
 const LayoutContainer: FC = props => {
   return (
-    <Row gutter={20} style={{ paddingRight: '30px' }}>
-      <Col span={3}>
+    <Row>
+      <Col span={3} className={styles.pr24}>
         <SidebarMenu />
       </Col>
-      <Col span={21}>{props.children}</Col>
+      <Col span={21} className={styles.pr24}>
+        {props.children}
+      </Col>
     </Row>
   );
 };

@@ -33,11 +33,13 @@
       "es7"
     ]
   },
+  "typeRoots": [
+    "node_modules/@types",
+    "typings",
+    "node_modules"
+  ],
   "exclude": [
     "node_modules",
     "lib"
-  ],
-  "include": [
-    "./global.d.ts"
   ]
 }
