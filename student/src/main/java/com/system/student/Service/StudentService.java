@@ -12,4 +12,6 @@ public interface StudentService {
     Integer createStudent(Student student);
 
     Student getStudentByNumber(Long number);
+
+    Integer deleteById(Long id);
 }

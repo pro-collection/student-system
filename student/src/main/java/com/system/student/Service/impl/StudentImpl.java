@@ -36,5 +36,8 @@ public class StudentImpl implements StudentService {
         return studentMapper.selectByNumber(number);
     }
 
-
+    @Override
+    public Integer deleteById(Long id) {
+        return studentMapper.deleteByPrimaryKey(id);
+    }
 }
