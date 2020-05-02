@@ -5,12 +5,12 @@ export interface StudentItem {
   name: string;
   gender: string;
   phone: string;
-  age: number;
-  grade: number;
-  classNumber: number;
-  email: number;
-  address: number;
-  birthday: number;
+  age?: number;
+  grade?: number;
+  classNumber?: number;
+  email?: number;
+  address?: number;
+  birthday?: number;
 }
 
 export interface StudentState {

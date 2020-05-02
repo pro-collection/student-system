@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { Button, Col, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
 import { toString } from 'lodash';
+import moment from 'moment';
 import { FORM_ITEM_LAYOUT } from '@src/consts';
 import { StudentFormProps } from './interface';
 import styles from './style.less';
+import { postStudentApi } from '@src/server';
 
 const { Option } = Select;
 
@@ -14,6 +16,14 @@ const StudentForm: FC<StudentFormProps> = props => {
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+
+        // 特殊处理日期
+        if (values.birthday) values.birthday = moment(values.birthday).valueOf();
+
+        // 提交
+        postStudentApi(values).then(res => {
+          console.log('创建成功: ', res);
+        });
       }
     });
   };
