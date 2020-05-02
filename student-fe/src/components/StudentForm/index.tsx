@@ -5,7 +5,7 @@ import moment from 'moment';
 import { FORM_ITEM_LAYOUT, FormType } from '@src/consts';
 import { StudentFormProps, StudentFormWrapperProps } from './interface';
 import styles from './style.less';
-import { postStudentApi } from '@src/server';
+import { postStudentApi, putStudentApi } from '@src/server';
 
 const { Option } = Select;
 
@@ -19,9 +19,14 @@ const StudentForm: FC<StudentFormProps> = props => {
         // 特殊处理日期
         if (values.birthday) values.birthday = moment(values.birthday).valueOf();
 
-        // 提交
-        const res = await postStudentApi(values);
-        if (!isEmpty(res)) resetFields();
+        if (props.userType === FormType.add) {
+          // 提交
+          const res = await postStudentApi(values);
+          if (!isEmpty(res)) resetFields();
+        } else if (props.studentId) {
+          const res = await putStudentApi(props.studentId, values);
+          if (!isEmpty(res) && props.history) props.history.replace('/');
+        }
       }
     });
   };

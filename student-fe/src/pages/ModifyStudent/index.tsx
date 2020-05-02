@@ -20,7 +20,7 @@ const ModifyStudent: FC<ModifyStudentProps> = props => {
       <hr />
       <LayoutContainer>
         {!isEmpty(currentStudentInfo) ? (
-          <StudentForm studentId={id} currentStudentInfo={currentStudentInfo} userType={FormType.update} />
+          <StudentForm history={props.history} studentId={id} currentStudentInfo={currentStudentInfo} userType={FormType.update} />
         ) : (
           <p>请从列表点击修改进入当前页面 修改学生信息</p>
         )}
