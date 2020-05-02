@@ -7,6 +7,9 @@ public class Student implements Serializable {
     @ApiModelProperty(value = "主键ID")
     private Long id;
 
+    @ApiModelProperty(value = "学号")
+    private Long number;
+
     @ApiModelProperty(value = "姓名")
     private String name;
 
@@ -42,6 +45,14 @@ public class Student implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
     }
 
     public String getName() {
@@ -123,6 +134,7 @@ public class Student implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", number=").append(number);
         sb.append(", name=").append(name);
         sb.append(", gender=").append(gender);
         sb.append(", phone=").append(phone);
