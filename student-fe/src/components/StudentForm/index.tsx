@@ -109,8 +109,8 @@ const StudentForm: FC<StudentFormProps> = props => {
               <Select placeholder="请选择年级">
                 <Option value="1">大一</Option>
                 <Option value="2">大二</Option>
-                <Option value="2">大三</Option>
-                <Option value="2">大四</Option>
+                <Option value="3">大三</Option>
+                <Option value="4">大四</Option>
               </Select>,
             )}
           </Form.Item>

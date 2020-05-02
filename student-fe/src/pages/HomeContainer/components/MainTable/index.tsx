@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { isEmpty } from 'lodash';
-import { Button, Table } from 'antd';
+import { Button, Modal, Table } from 'antd';
 import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
 import { StudentItem } from '@src/store/models/student/interface';
 import moment from 'moment';
@@ -9,12 +9,17 @@ import { deleteStudentApi } from '@src/server';
 
 const MainTable: FC<MainTableProps> = props => {
   const handleDelete = async (id: number) => {
-    const res = await deleteStudentApi(id);
-    console.log(res);
-    if (!isEmpty(res)) {
-      // 请求新的裂帛啊数据
-      await props.getListEffect();
-    }
+    Modal.confirm({
+      title: '请确认删除该学生信息',
+      onOk: async () => {
+        const res = await deleteStudentApi(id);
+        console.log(res);
+        if (!isEmpty(res)) {
+          // 请求新的裂帛啊数据
+          await props.getListEffect();
+        }
+      },
+    });
   };
 
   const columns = [
