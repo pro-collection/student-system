@@ -43,9 +43,9 @@ public class StudentController {
     @PutMapping("/{id}")
     public CommonResult<Boolean> put(@PathVariable Long id, @RequestBody Student student) {
         Student newStudent = new Student();
-        newStudent.setId(id);
         BeanUtils.copyProperties(student, newStudent);
-        Integer count = studentService.update(student);
+        newStudent.setId(id);
+        Integer count = studentService.update(newStudent);
         if (count != 0) return CommonResult.success(true, "更新学生信息成功");
         return CommonResult.failed("更新学生信息失败");
     }
