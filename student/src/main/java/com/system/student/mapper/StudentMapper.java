@@ -25,6 +25,8 @@ public interface StudentMapper {
 
     Student selectByPrimaryKey(Long id);
 
+    Student selectByNumber(Long number);
+
     int updateByExampleSelective(@Param("record") Student record, @Param("example") StudentExample example);
 
     int updateByExample(@Param("record") Student record, @Param("example") StudentExample example);

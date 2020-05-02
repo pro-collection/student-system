@@ -24,7 +24,7 @@ public class StudentController {
 
     @PostMapping("/create")
     public CommonResult<Boolean> create(@RequestBody Student student) {
-        Student findStudent = studentService.getStudentById(student.getId());
+        Student findStudent = studentService.getStudentByNumber(student.getNumber());
         if (findStudent != null) return CommonResult.failed("当前学生已存在");
         Integer createCount = studentService.createStudent(student);
         if (createCount != 0) return CommonResult.success(true, "新建学生成功");

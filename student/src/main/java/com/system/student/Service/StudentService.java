@@ -10,4 +10,6 @@ public interface StudentService {
     Student getStudentById(Long id);
 
     Integer createStudent(Student student);
+
+    Student getStudentByNumber(Long number);
 }

@@ -31,5 +31,10 @@ public class StudentImpl implements StudentService {
         return studentMapper.insertSelective(student);
     }
 
+    @Override
+    public Student getStudentByNumber(Long number) {
+        return studentMapper.selectByNumber(number);
+    }
+
 
 }
