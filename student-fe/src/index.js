@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import './common/reset.less';
 import routers from './routers';
-
 import store from './store';
+import './style/common.less';
 
 const render = Component =>
   ReactDOM.render(
