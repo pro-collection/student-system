@@ -1,3 +1,7 @@
+create database if not exists studentSystem character set utf8;
+
+use studentSystem;
+
 create table student
 (
     id           BIGINT(20) NOT NULL auto_increment COMMENT '主键ID',
