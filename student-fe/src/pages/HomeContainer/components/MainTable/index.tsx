@@ -1,25 +1,17 @@
 import React, { FC } from 'react';
-import { isEmpty } from 'lodash';
-import { Button, Modal, Table } from 'antd';
+import { Button, Table } from 'antd';
 import { MainTableProps } from '@src/pages/HomeContainer/components/MainTable/interface';
 import { StudentItem } from '@src/store/models/student/interface';
 import moment from 'moment';
 import { DATE_FORMAT } from '@src/consts';
-import { deleteStudentApi } from '@src/server';
+// import { deleteStudentApi } from '@src/server';
 
 const MainTable: FC<MainTableProps> = props => {
   const handleDelete = async (id: number) => {
-    Modal.confirm({
-      title: '请确认删除该学生信息',
-      onOk: async () => {
-        const res = await deleteStudentApi(id);
-        console.log(res);
-        if (!isEmpty(res)) {
-          // 请求新的裂帛啊数据
-          await props.getListEffect();
-        }
-      },
-    });
+    if (props.history)
+      props.history.push(`/delete/?id=${id}`, {
+        key: '5',
+      });
   };
 
   const columns = [
@@ -108,6 +100,18 @@ const MainTable: FC<MainTableProps> = props => {
       key: 'action',
       render: (item: StudentItem) => (
         <span>
+          <Button
+            style={{ marginRight: 16 }}
+            type="primary"
+            onClick={() => {
+              if (props.history) {
+                props.history.push(`/info/?id=${item.id}`, {
+                  key: '2',
+                });
+              }
+            }}>
+            详情
+          </Button>
           <Button
             style={{ marginRight: 16 }}
             onClick={() => {
